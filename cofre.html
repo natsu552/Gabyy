@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cofre do Amor 🔐</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #ff4d6d, #ff85a1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Poppins, sans-serif;
+      color: white;
+    }
+
+    .cofre {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: 25px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      width: 300px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      border-radius: 10px;
+      border: none;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 12px;
+      width: 100%;
+      border-radius: 30px;
+      border: none;
+      background: white;
+      color: #ff4d6d;
+      font-size: 1rem;
+    }
+
+    .msg {
+      margin-top: 10px;
+      min-height: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cofre">
+    <h1>🔐 Cofre do Amor</h1>
+    <p>Dica: nossa data especial 💖</p>
+
+    <input type="password" id="senha" placeholder="Digite a senha">
+    <button onclick="verificar()">Abrir Cofre</button>
+
+    <div class="msg" id="msg"></div>
+  </div>
+
+<script>
+  function verificar() {
+    const senha = document.getElementById("senha").value;
+    const msg = document.getElementById("msg");
+
+    if (senha === "1527") {
+      msg.innerText = "💖 Cofre aberto com sucesso!";
+      
+      // 👉 VAI PRA PÁGINA ROMÂNTICA
+      setTimeout(() => {
+        window.location.href = "concluido.html";
+      }, 1200);
+
+    } else {
+      msg.innerText = "❌ Senha errada… tenta de novo amor 😘";
+    }
+  }
+</script>
+
+</body>
+</html>

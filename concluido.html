@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Meu Amor 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* 🖼️ CARROSSEL DE FUNDO */
+    .background {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .background img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1.5s ease;
+    }
+
+    .background img.active {
+      opacity: 1;
+    }
+
+    /* OVERLAY ESCURO */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 1;
+    }
+
+    /* 💌 CARD */
+    .card {
+      position: relative;
+      z-index: 2;
+      width: 90%;
+      max-width: 420px;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(12px);
+      border-radius: 30px;
+      padding: 25px;
+      text-align: center;
+      color: white;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+    }
+
+    .card h1 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 1.05rem;
+      line-height: 1.5;
+    }
+
+    /* ❤️ CORAÇÕES CAINDO */
+    .heart {
+      position: fixed;
+      top: -20px;
+      font-size: 20px;
+      animation: fall linear forwards;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+
+    /* CENTRALIZAR */
+    .container {
+      position: relative;
+      z-index: 2;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🖼️ FUNDO -->
+  <div class="background">
+    <img src="foto1.jpg" class="active">
+    <img src="foto2.jpg">
+    <img src="foto3.jpg">
+    <img src="foto4.jpg">
+    <img src="foto5.jpg">
+  </div>
+
+  <div class="overlay"></div>
+
+  <!-- 💌 CARD -->
+  <div class="container">
+    <div class="card">
+      <h1>💖 Meu Amor</h1>
+      <p>
+        Cada fase, cada coração, cada passo…  
+        tudo foi por você.  
+        Você é meu lugar seguro, meu sorriso diário  
+        e a melhor parte da minha vida 💕
+      </p>
+    </div>
+  </div>
+
+<script>
+  /* 🖼️ CARROSSEL AUTOMÁTICO */
+  const images = document.querySelectorAll(".background img");
+  let index = 0;
+
+  setInterval(() => {
+    images[index].classList.remove("active");
+    index = (index + 1) % images.length;
+    images[index].classList.add("active");
+  }, 3500);
+
+  /* ❤️ CORAÇÕES CAINDO */
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 12 + 14) + "px";
+    heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 8000);
+  }
+
+  setInterval(createHeart, 250);
+</script>
+
+</body>
+</html>
